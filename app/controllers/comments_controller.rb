@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def person_params
+  def comment_params
     params.required(:comment).permit(:content)
   end
 
