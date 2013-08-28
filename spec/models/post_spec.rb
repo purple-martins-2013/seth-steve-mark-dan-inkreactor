@@ -30,6 +30,5 @@ describe Post do
       invalid_post = FactoryGirl.build(:post, subject: 'a' * 51)
       expect(invalid_post).to be_invalid
     end
-
   end
 end
