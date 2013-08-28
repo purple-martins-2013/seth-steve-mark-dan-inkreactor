@@ -4,4 +4,10 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_presence_of :username
+
+  validates :email, format: { with: /.{1,}@.{1,}\..{1,}/,
+    message: "must be a valid email address"}
+
 end
