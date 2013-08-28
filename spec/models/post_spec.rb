@@ -10,15 +10,6 @@ describe Post do
     expect(post).to be_valid
   end
 
-  context 'when given valid information' do
-
-    it 'creates a Post' do
-      expect {
-        post.save
-      }.to change(Post, :count).by(1)
-    end
-  end
-
   context 'when given invalid data' do
 
     it 'is invalid if content is above 8000 characters' do
