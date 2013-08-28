@@ -8,7 +8,6 @@ describe User do
       new_user.save
       new_user.should eq User.last
     end
-
   end
 
   context "user model functionality" do
@@ -43,7 +42,6 @@ describe User do
     end
 
     it 'should refuse passwords that are not 8 charaters or more' do
-
       bad_user1=User.new(username: 'mark', email: 'mark@gmail.com', password:'pass')
       bad_user1.valid?.should eq false
       new_user.valid?.should eq true
