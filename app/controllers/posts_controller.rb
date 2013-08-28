@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     @post = Post.new
   end
 
   def create
     post = Post.new(post_params)
+    post.user_id = session[:user_id]
     if post.save
       redirect_to post_path(post)
     else

@@ -5,4 +5,10 @@ FactoryGirl.define do
     sequence(:content) { |n| "This is the content for Post #{n}" }
   end
 
+  factory :user do
+    sequence(:email) { |n| "Person#{n}@email.com"}
+    sequence(:username) { |n| "Person#{n}"}
+    password 'password'
+  end
+
 end

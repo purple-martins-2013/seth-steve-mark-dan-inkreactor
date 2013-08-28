@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe PostsController do
 
+  #TODO is there a better way?
+  before do
+    FactoryGirl.create(:user)
+    sign_in User.first
+  end
+
   describe 'post create' do
     context 'with valid attributes' do
 
