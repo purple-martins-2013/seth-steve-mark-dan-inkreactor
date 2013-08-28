@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 # Core Stuff
 gem 'sqlite3'
 gem 'jquery-rails'
+gem 'turbolinks'
 
 group :assets do 
   gem 'sass-rails', '~> 4.0.0'
