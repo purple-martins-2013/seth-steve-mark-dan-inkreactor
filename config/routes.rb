@@ -4,9 +4,9 @@ Inkreactor::Application.routes.draw do
 
   devise_for :users
 
-  resources :posts, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
-  resources :comments, :only => [:new, :create]
+  resources :comments, only: [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

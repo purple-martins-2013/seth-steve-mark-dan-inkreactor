@@ -8,7 +8,14 @@ describe PostsController do
     sign_in User.first
   end
 
-  describe 'post create' do
+  describe '#index' do
+    it 'should display the first 25 posts' do
+      get :index
+      expect(assigns(:posts)).to eq Post.limit(25)
+    end
+  end
+
+  describe '#create' do
     let(:post_action) { post :create, post: post_attributes }
 
     context 'with valid attributes' do
@@ -70,6 +77,18 @@ describe PostsController do
         response.should redirect_to edit_post_path(@post)
       end
 
+    end
+  end
+
+  describe '#new' do
+    before { get :new }
+
+    it 'should assign a new post' do
+      expect(assigns(:post)).to be_a Post
+    end
+
+    it 'should render the new post form page' do
+      expect(response).to render_template("new")
     end
   end
 end
