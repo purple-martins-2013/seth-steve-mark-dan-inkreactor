@@ -1,6 +1,7 @@
 <div>
   <h1><%= @post.subject %></h1>
   <p><%= @post.content %></p>
+  <%= link_to 'Delete Post', post_path(@post), method: :delete %>
 </div>
 
 <div>

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /.{1,}@.{1,}\..{1,}/,
     message: "must be a valid email address"}
 
-  has_many :post
+  has_many :posts
   has_many :comments
 
 end

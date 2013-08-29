@@ -91,4 +91,44 @@ describe PostsController do
       expect(response).to render_template("new")
     end
   end
+
+  describe '#destroy' do
+
+    before do
+      @post = FactoryGirl.create(:post)
+      delete :destroy, { id: @post.id }
+    end
+
+    it 'should delete the correct post' do
+      expect(Post.find_by_id(@post.id)).to eq nil
+    end
+
+    it 'should redirect to the posts index page' do
+      expect(response).to redirect_to posts_path
+    end
+
+    it 'should flash a helpful message' do
+      expect(flash[:success]).to eq "Post \"#{@post.subject}\" was deleted."
+    end
+
+    describe "when trying to delete another user's post" do
+
+      before do
+        @another_user = FactoryGirl.create(:user)
+        post_arguments = FactoryGirl.attributes_for(:post)
+        @another_user_post = @another_user.posts.create(post_arguments)
+
+        delete :destroy, { id: @another_user_post.id }
+      end
+
+      it 'should not delete the post' do
+        expect(Post.find_by_id(@another_user_post.id)).to eq @another_user_post
+      end
+
+      it 'should return an unauthorized status code' do
+        expect(response.status).to eq 401 # unauthorized
+      end
+
+    end
+  end
 end

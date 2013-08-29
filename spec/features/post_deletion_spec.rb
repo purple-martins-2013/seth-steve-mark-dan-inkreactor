@@ -11,5 +11,15 @@ describe 'post deletion feature' do
     click_on 'Sign in'
   end
 
-  it 'should delete a post and redirect to post page' 
+  it 'should delete a post and redirect to post page' do
+    post = FactoryGirl.create(:post)
+
+    visit post_path(post)
+
+    click_on 'Delete Post'
+
+    expect(current_path).to eq posts_path
+    expect(Post.exists?(post.id)).not_to be true
+    expect(page).to have_content "Post \"#{post.subject}\" was deleted."
+  end
 end

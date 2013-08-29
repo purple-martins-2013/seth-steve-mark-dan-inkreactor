@@ -22,4 +22,8 @@ describe Post do
       expect(invalid_post).to be_invalid
     end
   end
+
+  describe 'when deleting a post' do
+    it 'should delete all the comments that belonged to the post'
+  end
 end

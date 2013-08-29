@@ -37,8 +37,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find_by_id(params[:id]).destroy
-    redirect_to root
+    post = Post.find_by_id(params[:id])
+    if post.id == current_user.id
+      post.destroy
+      flash[:success] = "Post \"#{post.subject}\" was deleted."
+      redirect_to posts_path
+    else
+      render 'public/401', status: :unauthorized
+    end
   end
 
   private
