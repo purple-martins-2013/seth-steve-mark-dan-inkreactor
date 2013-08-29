@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find_by_id(params[:id])
-    if post.id == current_user.id
+    if post.user == current_user
       post.destroy
       flash[:success] = "Post \"#{post.subject}\" was deleted."
       redirect_to posts_path
