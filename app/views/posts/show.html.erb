@@ -2,3 +2,10 @@
   <h1><%= @post.subject %></h1>
   <p><%= @post.content %></p>
 </div>
+
+<div>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+</div>
