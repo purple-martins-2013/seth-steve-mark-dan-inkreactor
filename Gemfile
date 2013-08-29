@@ -20,7 +20,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'spork-rails', github: 'sporkrb/spork-rails'
 end
 

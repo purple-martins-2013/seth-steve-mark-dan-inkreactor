@@ -24,10 +24,17 @@ class PostsController < ApplicationController
   end
 
   def update
-    Post.update(params[:id], post_params)
-    redirect_to post_path(params[:id])
+    if Post.find_by_id(params[:id]).update(post_params)
+      redirect_to post_path(params[:id])
+    else
+      redirect_to edit_post_path(params[:id])
+    end
   end
 
+  def destroy
+    Post.find_by_id(params[:id]).destroy
+    redirect_to root
+  end
 
   private
 

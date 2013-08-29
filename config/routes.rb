@@ -4,7 +4,7 @@ Inkreactor::Application.routes.draw do
 
   devise_for :users
 
-  resources :posts, only: [:new, :create, :show, :edit, :update]
+  resources :posts, only: [:new, :create, :show, :edit, :update, :destroy]
 
   resources :comments, :only => [:new, :create]
 
