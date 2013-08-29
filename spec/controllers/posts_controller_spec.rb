@@ -9,28 +9,32 @@ describe PostsController do
   end
 
   describe 'post create' do
+    let(:post_action) { post :create, post: post_attributes }
+
     context 'with valid attributes' do
+      let(:post_attributes) { FactoryGirl.attributes_for(:post) }
 
       it 'creates a new post' do
         expect {
-          post :create, post: FactoryGirl.attributes_for(:post)
+          post_action
           }.to change(Post, :count).by(1)
       end
 
       it "redirects to post's show page" do
-        post :create, post: FactoryGirl.attributes_for(:post)
+        post_action
         response.should redirect_to Post.last
       end      
     end
 
     context "with invalid attributes" do
+      let(:post_attributes) { FactoryGirl.attributes_for(:post, subject: '') }
 
       it "does NOT create a new post" do
-        expect { post :create, post: FactoryGirl.attributes_for(:post, subject: '')}.to_not change(Post, :count)
+        expect { post_action }.to_not change(Post, :count)
       end
 
       it 'redirects to posts#new page' do
-        post :create, post: FactoryGirl.attributes_for(:post, subject: '')
+        post_action
         response.should redirect_to new_post_path
       end
     end
@@ -38,31 +42,31 @@ describe PostsController do
 
   describe 'put edit' do
 
-    before { @post = FactoryGirl.create(:post, subject: 'Change this')}
+    before { @post = FactoryGirl.create(:post, subject: 'Change this') }
 
     context 'with valid attributes' do
+      before { put :update, id: @post, post: FactoryGirl.attributes_for(:post) }
 
       it 'changes @post attributes' do
-        put :update, id: @post, post: FactoryGirl.attributes_for(:post)
         @post.reload
         expect(@post.subject).to have_content('subject')
       end
 
       it 'should redirect to updated contact' do
-        put :update, id: @post, post: FactoryGirl.attributes_for(:post)
         response.should redirect_to @post
       end
     end
 
     context 'with invalid attributes' do
+      before do
+        put :update, id: @post, post: FactoryGirl.attributes_for(:post, subject: '')
+      end
 
       it 'does not change the @post attritbutes' do
-        put :update, id: @post, post: FactoryGirl.attributes_for(:post, subject: '')
         expect(@post.subject).to have_content('Change')
       end
 
       it 'does redirects to the @post edit page' do
-        put :update, id: @post, post: FactoryGirl.attributes_for(:post, subject: '')
         response.should redirect_to edit_post_path(@post)
       end
 
