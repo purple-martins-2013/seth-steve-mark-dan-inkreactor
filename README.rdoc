@@ -1,28 +1,50 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+InkFoundry is a Rails 4.0 application to bring writers and authors together for mutal critiques and revisions of textual works.  
 
-Things you may want to cover:
+Important notes: 
 
-* Ruby version
+* Devise used for user authentication
 
-* System dependencies
+* Testing Stack:
+
+  - RSpec
+
+  - Factory Girl
+
+  - Capybara
+
+  - Spork (for optimization of test run process... '$ rspec' is aliased to '$ rspec -X' to run tests with Spork preloading of resources automatically) 
+
+  - Guard (continuous testing... run '$ guard' to launch a Pry terminal that will relaunch the RSpec suite related to any given file that changes in an editor)
 
 * Configuration
 
-* Database creation
+  - No special configuration is required. 
+
+* Database
+
+  - SQLite3 is used for development and test. No production database is configured. 
 
 * Database initialization
 
+  - '$ rake db:create'
+
+...followed by
+
+  - '$ rake db:migrate' for development
+  - '$ rake db:migrate RAILS_ENV=test' for test
+
 * How to run the test suite
+
+  - '$ spork' to start the Spork server and preload test environment for better performance
+  - '$ rspec' for standalone complete test suite
+  - '$ guard' for continuous small-set testing based on file changes
 
 * Services (job queues, cache servers, search engines, etc.)
 
+  - No external service dependencies
+
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  - No production environment configured for production
