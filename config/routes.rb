@@ -1,7 +1,10 @@
 Inkreactor::Application.routes.draw do
+  
+  root 'static_pages#welcome'
+
   devise_for :users
 
-  resources :posts, only: [:new, :create, :show]
+  resources :posts, only: [:new, :create, :show, :edit, :update]
 
   resources :comments, :only => [:new, :create]
 

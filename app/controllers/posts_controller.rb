@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
-    post.user_id = session[:user_id]
+    post.user_id = current_user.id
     if post.save
       redirect_to post_path(post)
     else
@@ -16,7 +16,16 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find_by_id(params[:id])
+  end
 
+  def edit
+    @post = Post.find_by_id(params[:id])
+  end
+
+  def update
+    Post.update(params[:id], post_params)
+    redirect_to post_path(params[:id])
   end
 
 

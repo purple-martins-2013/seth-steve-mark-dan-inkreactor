@@ -28,6 +28,7 @@ group :test do
   gem 'capybara'
   gem 'jasmine'
   gem 'shoulda'
+  gem 'launchy'
 end
 
 group :doc do
