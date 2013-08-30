@@ -6,14 +6,14 @@ describe CommentsController do
     FactoryGirl.create(:user)
     sign_in User.first
   end
+  
+  let(:post_to_comment_on) { FactoryGirl.create(:post) }
+  let(:comment_attributes) { FactoryGirl.attributes_for(:comment) }
 
   describe 'post create' do
-    let(:post_to_comment_on) { FactoryGirl.create(:post) }
     let(:comment_action) { post :create, post_id: post_to_comment_on.id, comment: comment_attributes }
 
     context 'with valid attributes' do
-      let(:comment_attributes) { FactoryGirl.attributes_for(:comment) }
-
       it 'creates a new comment' do
         expect { 
           comment_action
@@ -27,7 +27,6 @@ describe CommentsController do
     end
 
     context 'with invalid attributes' do
-      let(:post_to_comment_on) { FactoryGirl.create(:post) }
       let(:comment_action) { post :create, post_id: post_to_comment_on.id, comment: { content: '' } }
 
       it 'does NOT create a new comment' do
@@ -41,6 +40,5 @@ describe CommentsController do
         response.should redirect_to post_path(post_to_comment_on)
       end
     end
-    
   end
 end
