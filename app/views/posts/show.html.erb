@@ -1,4 +1,18 @@
 <div>
   <h1><%= @post.subject %></h1>
   <p><%= @post.content %></p>
+  <%= link_to 'Delete Post', post_path(@post), method: :delete %>
+</div>
+
+<div>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<div>
+  <% @posts_comments.each do |comment| %>
+    <%= render '/posts/comment_template', comment: comment %>
+  <% end %>
 </div>

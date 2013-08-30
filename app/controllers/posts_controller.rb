@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @posts = Post.limit(25)
+  end
+
   def new
     @post = Post.new
   end
@@ -17,6 +21,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_id(params[:id])
+    @comment = @post.comments.build
+    @posts_comments = Comment.where(post_id: params[:id])
   end
 
   def edit
@@ -32,8 +38,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find_by_id(params[:id]).destroy
-    redirect_to root
+    post = Post.find_by_id(params[:id])
+    if post.user == current_user
+      post.destroy
+      flash[:success] = "Post \"#{post.subject}\" was deleted."
+      redirect_to posts_path
+    else
+      render 'public/401', status: :unauthorized
+    end
   end
 
   private
