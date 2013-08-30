@@ -1,16 +1,19 @@
+#content h4 {
+  color: #7b4804;
+  text-align: center;
+  font-family: 'Actor'
+}
+
 #left_column_nav {
   background-color: #7b4804;
-  height: 50em;
-
+  height: 100em;
 }
 
 #left_column_nav a {
   color: #f6b762;  
-
-}
-
-#content h4 {
-  color: #f6b762;
+  text-align: center;
+  font-size: 120%;
+  font-family: 'Actor'
 }
 
 .divider li {
@@ -19,4 +22,8 @@
 
 .nav_bar_divider {
   border: #f6b762 solid 1px;
+}
+
+#container {
+  background-image: url("/assets/white_paper_texture.jpg");
 }
