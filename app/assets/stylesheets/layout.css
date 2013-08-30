@@ -1,0 +1,22 @@
+#left_column_nav {
+  background-color: #7b4804;
+  height: 50em;
+
+}
+
+#left_column_nav a {
+  color: #f6b762;  
+
+}
+
+#content h4 {
+  color: #f6b762;
+}
+
+.divider li {
+  color: #f6b762;
+}
+
+.nav_bar_divider {
+  border: #f6b762 solid 1px;
+}
