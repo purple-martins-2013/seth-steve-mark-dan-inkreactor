@@ -129,6 +129,13 @@ describe PostsController do
         expect(response.status).to eq 401 # unauthorized
       end
 
+  describe 'get show' do
+    let(:post_to_comment_on) { FactoryGirl.create(:post) }
+    let(:comment) { FactoryGirl.create(:comment, post_id: post_to_comment_on.id) }
+
+    it "@comments should contain all saved comments" do
+      get :show, { id: post_to_comment_on.id}
+      expect(assigns(:posts_comments)).to eq([comment])
     end
   end
 end

@@ -10,3 +10,9 @@
     <%= f.submit %>
   <% end %>
 </div>
+
+<div>
+  <% @posts_comments.each do |comment| %>
+    <%= render '/posts/comment_template', comment: comment %>
+  <% end %>
+</div>
