@@ -19,7 +19,7 @@ describe User do
     it "user should be persisted in the database" do
       new_user=User.new(username:'mark' ,email:'mark@email.com', password:'password')
       new_user.save
-      expect(User.count).should eq 1
+      expect(User.count).to eq 1
     end
   end
 
