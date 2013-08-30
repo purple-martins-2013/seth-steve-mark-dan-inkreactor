@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'compass-rails'
+gem 'zurb-foundation', '~> 4.0.0'
 
 group :assets do 
   gem 'sass-rails', '~> 4.0.0'
