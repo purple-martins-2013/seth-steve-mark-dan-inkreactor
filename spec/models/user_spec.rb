@@ -10,7 +10,7 @@ describe User do
     it { should_not allow_value("blah").for(:email) }
     it { should_not allow_value("mark#gmail.com").for(:email) }
     it { should_not allow_value("@gmail.com").for(:email) }
-    it { should_not allow_value("@gmail.com").for(:email) }
+    it { should_not allow_value("@gmail.com").for(:email) }  #repeat
   end
 end
 
