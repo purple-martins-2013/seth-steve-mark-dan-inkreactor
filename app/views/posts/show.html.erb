@@ -12,7 +12,9 @@
 </div>
 
 <div>
+  <ul>
   <% @posts_comments.each do |comment| %>
-    <%= render '/posts/comment_template', comment: comment %>
+    <li><%= render '/posts/comment_template', comment: comment %></li>
   <% end %>
+  </ul>
 </div>
