@@ -3,8 +3,15 @@ require 'spec_helper'
 describe Post do 
 
   let(:post) { FactoryGirl.build(:post) }
-  it {should validate_presence_of :subject}
-  it {should validate_presence_of :content}
+  
+  context 'post model validations' do
+    it { should validate_presence_of :subject }
+    it { should validate_presence_of :content }
+  end
+
+  context 'post associations' do
+    it { should belong_to(:user) }
+  end
 
   it "is valid when given valid attributes" do
     expect(post).to be_valid
