@@ -4,11 +4,18 @@ describe PostsController do
 
   #TODO is there a better way?
   before do
-    FactoryGirl.create(:user)
-    sign_in User.first
+    @user = FactoryGirl.create(:user)
+    sign_in @user
   end
 
-  describe 'post create' do
+  describe '#index' do
+    it 'should display the first 25 posts' do
+      get :index
+      expect(assigns(:posts)).to eq Post.limit(25)
+    end
+  end
+
+  describe '#create' do
     let(:post_action) { post :create, post: post_attributes }
 
     context 'with valid attributes' do
@@ -69,7 +76,67 @@ describe PostsController do
       it 'does redirects to the @post edit page' do
         response.should redirect_to edit_post_path(@post)
       end
+    end
+  end
 
+  describe '#new' do
+    before { get :new }
+
+    it 'should assign a new post' do
+      expect(assigns(:post)).to be_a Post
+    end
+
+    it 'should render the new post form page' do
+      expect(response).to render_template("new")
+    end
+  end
+
+  describe '#destroy' do
+
+    before do
+      @post = FactoryGirl.create(:post, { user: @user})
+      delete :destroy, { id: @post.id }
+    end
+
+    it 'should delete the correct post' do
+      expect(Post.find_by_id(@post.id)).to eq nil
+    end
+
+    it 'should redirect to the posts index page' do
+      expect(response).to redirect_to posts_path
+    end
+
+    it 'should flash a helpful message' do
+      expect(flash[:success]).to eq "Post \"#{@post.subject}\" was deleted."
+    end
+
+    describe "when trying to delete another user's post" do
+
+      before do
+        @another_user = FactoryGirl.create(:user)
+        post_arguments = FactoryGirl.attributes_for(:post)
+        @another_user_post = @another_user.posts.create(post_arguments)
+
+        delete :destroy, { id: @another_user_post.id }
+      end
+
+      it 'should not delete the post' do
+        expect(Post.find_by_id(@another_user_post.id)).to eq @another_user_post
+      end
+
+      it 'should return an unauthorized status code' do
+        expect(response.status).to eq 401 # unauthorized
+      end
+    end
+  end
+  
+  describe 'get show' do
+    let(:post_to_comment_on) { FactoryGirl.create(:post) }
+    let(:comment) { FactoryGirl.create(:comment, post_id: post_to_comment_on.id) }
+
+    it "@comments should contain all saved comments" do
+      get :show, { id: post_to_comment_on.id}
+      expect(assigns(:posts_comments)).to eq([comment])
     end
   end
 end

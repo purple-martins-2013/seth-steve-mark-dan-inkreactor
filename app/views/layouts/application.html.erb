@@ -8,6 +8,14 @@
 </head>
 <body>
 
+<% flash.each do |key,msg| %>
+  <div class="message" id="<%= key %>">
+    <div class="message-inner">
+      <%= content_tag :div, msg %>
+    </div>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
