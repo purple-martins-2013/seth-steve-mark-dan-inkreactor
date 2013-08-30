@@ -1,18 +1,18 @@
+#content h4 {
+  color: #7b4804;
+  text-align: center;
+  font-family: 'Actor'
+}
+
 #left_column_nav {
   background-color: #7b4804;
   height: 100em;
-
 }
 
 #left_column_nav a {
   color: #f6b762;  
-  font-family: 'Actor'
-
-
-}
-
-#content h4 {
-  color: #7b4804;
+  text-align: center;
+  font-size: 120%;
   font-family: 'Actor'
 }
 
@@ -26,11 +26,4 @@
 
 #container {
   background-image: url("/assets/white_paper_texture.jpg");
-}
-
-@font-face
-{
-font-family: myFirstFont;
-src: url('DAYROM__.ttf'),
-     url('DAYROM__.eot'); /* IE9 */
 }
