@@ -22,11 +22,11 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'jasmine-rails'
 end
 
 group :test do
   gem 'capybara'
-  gem 'jasmine'
   gem 'shoulda'
   gem 'launchy'
 end
