@@ -4,7 +4,7 @@ describe 'post deletion feature' do
 
   #TODO This is also used in edit_post_spec.rb.  Refactor
   before do
-    User.create({:username => 'foo', :email => 'Person1@example.com', :password => 'password'})
+    @user = User.create({:username => 'foo', :email => 'Person1@example.com', :password => 'password'})
     visit new_user_session_path
     fill_in 'user[email]', with: 'Person1@example.com'
     fill_in 'user[password]', with: 'password'
@@ -12,7 +12,7 @@ describe 'post deletion feature' do
   end
 
   it 'should delete a post and redirect to post page' do
-    post = FactoryGirl.create(:post)
+    post = FactoryGirl.create(:post, { user: @user })
 
     visit post_path(post)
 

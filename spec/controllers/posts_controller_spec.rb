@@ -4,8 +4,8 @@ describe PostsController do
 
   #TODO is there a better way?
   before do
-    FactoryGirl.create(:user)
-    sign_in User.first
+    @user = FactoryGirl.create(:user)
+    sign_in @user
   end
 
   describe '#index' do
@@ -95,7 +95,7 @@ describe PostsController do
   describe '#destroy' do
 
     before do
-      @post = FactoryGirl.create(:post)
+      @post = FactoryGirl.create(:post, { user: @user})
       delete :destroy, { id: @post.id }
     end
 
