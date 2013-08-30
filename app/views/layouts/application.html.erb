@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class='top-bar home-border hide-for-small'>
+    <ul>
+      <% if current_user %>
+        <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+      <% else %>
+        <li><%= link_to "Sign In", new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
 
 <% flash.each do |key,msg| %>
   <div class="message" id="<%= key %>">
