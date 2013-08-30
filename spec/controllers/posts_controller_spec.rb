@@ -76,7 +76,6 @@ describe PostsController do
       it 'does redirects to the @post edit page' do
         response.should redirect_to edit_post_path(@post)
       end
-
     end
   end
 
@@ -128,7 +127,9 @@ describe PostsController do
       it 'should return an unauthorized status code' do
         expect(response.status).to eq 401 # unauthorized
       end
-
+    end
+  end
+  
   describe 'get show' do
     let(:post_to_comment_on) { FactoryGirl.create(:post) }
     let(:comment) { FactoryGirl.create(:comment, post_id: post_to_comment_on.id) }
