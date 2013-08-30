@@ -10,7 +10,8 @@
   <div class='top-bar home-border hide-for-small'>
     <ul>
       <% if current_user %>
-        <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+        <li><%= link_to current_user.username, current_user %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
       <% else %>
         <li><%= link_to "Log In", new_user_session_path %></li>
       <% end %>
