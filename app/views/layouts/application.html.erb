@@ -10,7 +10,6 @@
   <link href='http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps|Gilda+Display|Bad+Script|Trykker|Poly|Actor' rel='stylesheet' type='text/css'>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 </head>
 <body>
 
@@ -25,14 +24,19 @@
 <div id='container' class='row'>
   <nav id='left_column_nav' class="small-2 columns">
     <ul class="side-nav">
-      <li ><%= link_to"Sign In", user_session_path %></li>
-      <li><%= link_to "Sign Up", new_user_session_path%></li>
+      
+     <!--  /TODO change logic so Sign In, Sign Up and Sign Out path are working  -->
+     
+      <li><%if !@user%><%=link_to "Sign In", user_session_path %><%end%></li>
+      <li><%if !@user%><%=link_to "Sign Up", new_user_session_path%><%end%></li>
+      <li><%if !@user%><%=link_to "Sign Out", destroy_user_session_path%><%end%></li>
+      
       <li class="nav_bar_divider"></li>
       <li><a href="#" data-dropdown="drop1">Post</a>
           <ul id="drop1" class="f-dropdown" data-dropdown-content>
             <li><a href="#"></a></li>
             <li><%=link_to "View Post", posts_path%></li>
-            <li><%= link_to "Create Post", new_post_path%></li>
+            <li><%=link_to "Create Post", new_post_path%></li>
           </ul>
       </li>
     </ul>  
@@ -54,6 +58,6 @@
   </div>
 </div>
 
-<div class="reveal-modal" style="display: none"></div>
+<div class="reveal-modal"></div>
 </body>
 </html>

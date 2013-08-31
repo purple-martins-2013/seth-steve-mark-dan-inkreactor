@@ -1,4 +1,4 @@
-#content h4 {
+h4 {
   color: #7b4804;
   text-align: center;
   font-family: 'Actor'
@@ -50,4 +50,17 @@ footer {
   text-align: center;
   font-size: 60%;
   font-family: 'Actor';
+}
+/*div h4 {
+  color: #f6b762;  
+  text-align: center;
+  font-size: 100%;
+  font-family: 'Actor'*/
+}
+h2{
+   color: #f6b762;  
+  text-align: center;
+  font-size: 100%;
+  font-family: 'Actor'
+
 }
