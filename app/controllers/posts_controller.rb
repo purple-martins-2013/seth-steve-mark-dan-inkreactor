@@ -21,8 +21,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_id(params[:id])
-    @comment = @post.comments.build  #what is this doing?  Building association?
-    @posts_comments = Comment.where(post_id: params[:id])  #Do we need this?
+    @comment = Comment.new(post_id: @post.id)
   end
 
   def edit
