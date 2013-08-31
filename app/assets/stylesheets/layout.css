@@ -16,6 +16,10 @@
   font-family: 'Actor'
 }
 
+#left_column_nav a:hover {
+  background-color: #563203;
+}
+
 #container {
   height: auto;
   background-image: url("/assets/white_paper_texture.jpg");
@@ -28,14 +32,14 @@
   border: #f6b762 solid 1px;
 }
 
-a:hover{
-  background-color: #563203;
-}
-
 #social-icons{
   position:absolute;
   bottom: 50px;
   padding-left: 20px;
+}
+
+a img:hover{
+  background-color: #563203;
 }
 
 footer {
