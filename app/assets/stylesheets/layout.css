@@ -27,3 +27,8 @@
 #container {
   background-image: url("/assets/white_paper_texture.jpg");
 }
+#social-icons{
+  position:absolute;
+  bottom: 0;
+  float: center;
+}
