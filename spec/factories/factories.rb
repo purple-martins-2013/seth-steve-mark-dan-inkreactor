@@ -11,14 +11,14 @@ FactoryGirl.define do
       end
 
       before(:create) do |post, evaluator|
-        FactoryGirl.create_list(:post, evaluator.comment_count, post: post)
+        FactoryGirl.create_list(:comment, evaluator.comment_count, post: post)
       end
 
     end
   end
 
   factory :comment do
-    sequence (:content) {|n| "This is the content for the Post comment #{n}"}
+    sequence(:content) {|n| "This is the content for the Post comment #{n}"}
     user
     post
   end
