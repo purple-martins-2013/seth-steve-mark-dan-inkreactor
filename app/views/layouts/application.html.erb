@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Inkreactor</title>
- 
+<head profile="http://www.inkreactor.com">
+  <title>Inkreactor</title> 
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "layout", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -32,20 +31,28 @@
       <li><a href="#" data-dropdown="drop1">Post</a>
           <ul id="drop1" class="f-dropdown" data-dropdown-content>
             <li><a href="#"></a></li>
+            <li><a href="#">View Post</a></li>
             <li><a href="#">Create Post</a></li>
-            <li><a href="#">Edit Post</a></li>
           </ul>
-        </li>
-    </ul>     
+      </li>
+    </ul>  
+    <div id="social-icons">
+      <a href="https://facebook.com"><img src="facebook.png" width="24" height="24" alt="Facebook" /></a>
+      <a href="https://twitter.com"><img src="twitter.png" width="24" height="24" alt="Twitter" /></a>
+      <a href="https://github.com"><img src="github.png" width="24" height="24" alt="Github" /></a>
+    </div>
+      <footer>
+        <p>Created by:</p>
+        <a href="mailto:seth@sethhochberg.com">Seth, </a>
+        <a href="mailto:stharlow@gmail.com">Steve, </a>
+        <a href="mailto:dewrgleision@gmail.com">Dan, </a>
+        <a href="mailto:mehagel65@gmai.com">Mark</a>
+      </footer>   
   </nav>
-
-
-
   <div id='content' class='small-10 columns'>
     <%= yield %>
   </div>
 </div>
-
 <div class="reveal-modal-bg" style="display: none"></div>
 </body>
 </html>

@@ -25,5 +25,20 @@
 }
 
 #container {
+  height: auto;
   background-image: url("/assets/white_paper_texture.jpg");
+}
+#social-icons{
+  position:absolute;
+  bottom: 50px;
+  padding-left: 20px;
+}
+footer {
+  position:absolute;
+  bottom: 5px;
+  text-align: center;
+  color: #f6b762;  
+  text-align: center;
+  font-size: 60%;
+  font-family: 'Actor';
 }
