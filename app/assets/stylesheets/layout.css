@@ -51,16 +51,15 @@ footer {
   font-size: 60%;
   font-family: 'Actor';
 }
-/*div h4 {
+div {
+  text-decoration: 
   color: #f6b762;  
-  text-align: center;
-  font-size: 100%;
-  font-family: 'Actor'*/
+  font-family: 'Actor';
 }
-h2{
-   color: #f6b762;  
-  text-align: center;
-  font-size: 100%;
-  font-family: 'Actor'
-
+.button {
+  padding:5px;
+  background-color: #dcdcdc;
+  border: 1px solid #666;
+  color:#000;
+  text-decoration:none;
 }
