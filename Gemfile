@@ -10,7 +10,7 @@ gem "compass-rails", "~> 2.0.alpha.0"
 gem 'sass-rails', '~> 4.0.0'
 gem 'zurb-foundation', '~> 4.0.0'
 
-group :assets do 
+group :assets do
   gem 'uglifier', '>= 1.3.0'
 end
 
@@ -25,6 +25,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'jasmine-rails'
+  gem 'selenium-webdriver'
 end
 
 group :test do

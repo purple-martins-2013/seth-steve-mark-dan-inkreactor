@@ -11,7 +11,7 @@ describe 'Edit comment' do
 
   let(:commented_post) { FactoryGirl.create(:post_with_comments) }
 
-  describe "when current_user is the comment's author" do
+  describe "when current_user is the comment's author", js: true do
     it 'should edit the comment content' do
       visit post_path(commented_post)
       within ("#comment-#{commented_post.comments.first.id}") do
