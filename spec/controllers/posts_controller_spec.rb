@@ -30,7 +30,7 @@ describe PostsController do
       it "redirects to post's show page" do
         post_action
         response.should redirect_to Post.last
-      end      
+      end
     end
 
     context "with invalid attributes" do
