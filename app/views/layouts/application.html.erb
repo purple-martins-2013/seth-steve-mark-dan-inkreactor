@@ -24,9 +24,6 @@
 <div id='container' class='row'>
   <nav id='left_column_nav' class="small-2 columns">
     <ul class="side-nav">
-      
-     <!--  /TODO change logic so Sign In, Sign Up and Sign Out path are working  -->
-     
       <li><%if !current_user%><%=link_to "Sign In", user_session_path %><%end%></li>
       <li><%if !current_user%><%=link_to "Sign Up", new_user_registration_path%><%end%></li>
       <li><%if current_user%><%=link_to "Sign Out", destroy_user_session_path, :method =>:delete %><%end%></li>
