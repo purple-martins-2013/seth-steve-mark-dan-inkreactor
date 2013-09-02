@@ -1,20 +1,20 @@
 <div>
-  <h1><%= @post.subject %></h1>
+  <h4><%= @post.subject %></h4>
   <p><%= @post.content %></p>
   <%= link_to 'Delete Post', post_path(@post), method: :delete %>
 </div>
 
 <div>
-  <%= form_for [@post, @comment] do |f| %>
-    <%= f.text_area :content %>
-    <%= f.submit %>
-  <% end %>
+  <%= render partial: 'comments/form' %>
 </div>
 
 <div>
   <ul>
-    <% @posts_comments.each do |comment| %>
-      <li><%= render '/posts/comment_template', comment: comment %></li>
+    <% @post.comments.each do |comment| %>
+      <li id="comment-<%= comment.id %>", class='get-edit-comment'>
+        <%= render '/posts/comment_template', comment: comment %></br>
+        <%= link_to 'edit', edit_post_comment_path(@post, comment), remote: true %> 
+      </li>
     <% end %>
   </ul>
 </div>

@@ -1,4 +1,4 @@
-#content h4 {
+h4 {
   color: #7b4804;
   text-align: center;
   font-family: 'Actor'
@@ -16,6 +16,15 @@
   font-family: 'Actor'
 }
 
+#left_column_nav a:hover {
+  background-color: #563203;
+}
+
+#container {
+  height: auto;
+  background-image: url("/assets/white_paper_texture.jpg");
+}
+
 .divider li {
   color: #f6b762;
 }
@@ -24,6 +33,26 @@
   border: #f6b762 solid 1px;
 }
 
-#container {
-  background-image: url("/assets/white_paper_texture.jpg");
+#social-icons{
+  position:absolute;
+  bottom: 50px;
+  padding-left: 20px;
+}
+
+a img:hover{
+  background-color: #563203;
+}
+
+footer {
+  position:absolute;
+  bottom: 5px;
+  color: #f6b762;  
+  text-align: center;
+  font-size: 60%;
+  font-family: 'Actor';
+}
+
+div {
+  color: #563203;  
+  font-family: 'Actor';
 }

@@ -1,6 +1,6 @@
 == README
 
-InkFoundry is a Rails 4.0 application to bring writers and authors together for mutal critiques and revisions of textual works.  
+InkReactor is a Rails 4.0 application to bring writers and authors together for mutal critiques and revisions of textual works.  
 
 Important notes: 
 

@@ -1,0 +1,4 @@
+<%= form_for [@post, @comment], html: { class: 'comment-form'} do |f| %>
+  <%= f.text_area :content, { :value => @comment.content } %>
+  <%= f.submit %>
+<% end %>

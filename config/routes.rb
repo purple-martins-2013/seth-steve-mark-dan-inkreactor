@@ -8,9 +8,11 @@ Inkreactor::Application.routes.draw do
 	get 'tags/:name', to: 'tags#show', as: 'tag'
 
   resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-    resources :comments, :only => [:new, :create]
     resources :tags, :only => [:new, :create]
+    resources :comments, :only => [:new, :create, :edit, :update]
   end
+
+  mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
 
 
   # The priority is based upon order of creation: first created -> highest priority.

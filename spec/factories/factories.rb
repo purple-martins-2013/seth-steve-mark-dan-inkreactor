@@ -13,6 +13,11 @@ FactoryGirl.define do
       ignore do
         comment_count 5
       end
+
+      before(:create) do |post, evaluator|
+        FactoryGirl.create_list(:comment, evaluator.comment_count, post: post)
+      end
+
     end
 	
     factory :post_with_tags do
@@ -27,7 +32,7 @@ FactoryGirl.define do
   end
 
   factory :comment do
-    sequence (:content) {|n| "This is the content for the Post comment #{n}"}
+    sequence(:content) {|n| "This is the content for the Post comment #{n}"}
     user
     post
   end

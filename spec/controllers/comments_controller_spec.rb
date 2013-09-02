@@ -6,7 +6,7 @@ describe CommentsController do
     FactoryGirl.create(:user)
     sign_in User.first
   end
-  
+
   let(:post_to_comment_on) { FactoryGirl.create(:post) }
   let(:comment_attributes) { FactoryGirl.attributes_for(:comment) }
 
@@ -15,7 +15,7 @@ describe CommentsController do
 
     context 'with valid attributes' do
       it 'creates a new comment' do
-        expect { 
+        expect {
           comment_action
           }.to change(Comment, :count).by(1)
       end

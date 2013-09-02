@@ -30,7 +30,7 @@ describe PostsController do
       it "redirects to post's show page" do
         post_action
         response.should redirect_to Post.last
-      end      
+      end
     end
 
     context "with invalid attributes" do
@@ -136,7 +136,7 @@ describe PostsController do
 
     it "@comments should contain all saved comments" do
       get :show, { id: post_to_comment_on.id}
-      expect(assigns(:posts_comments)).to eq([comment])
+      expect(assigns(:post)).to eq(post_to_comment_on)
     end
   end
 end
