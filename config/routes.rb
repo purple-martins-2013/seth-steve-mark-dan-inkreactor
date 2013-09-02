@@ -5,6 +5,7 @@ Inkreactor::Application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
   resources :tags, only: [:index]
+	get 'tags/:name', to: 'tags#show', as: 'tag'
 
   resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :comments, :only => [:new, :create]
