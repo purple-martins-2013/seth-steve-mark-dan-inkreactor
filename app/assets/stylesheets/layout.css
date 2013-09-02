@@ -56,3 +56,10 @@ div {
   color: #563203;  
   font-family: 'Actor';
 }
+
+.message-inner {
+	padding: 20px;
+	width: 100%;
+	background-color: #7B4804;
+	color: #F6B762;
+}

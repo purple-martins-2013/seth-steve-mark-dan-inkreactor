@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20130901233413) do
   create_table "votes", force: true do |t|
     t.integer "user_id"
     t.integer "post_id"
-    t.boolean "upvote"
+    t.boolean "upvote",  default: false
   end
 
 end

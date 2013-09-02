@@ -22,6 +22,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_id(params[:id])
     @comment = Comment.new(post_id: @post.id)
+		@tag = Tag.new
+		@tag.posts << @post
   end
 
   def edit

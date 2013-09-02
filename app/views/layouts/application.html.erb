@@ -13,14 +13,6 @@
 </head>
 <body>
 
-<% flash.each do |key,msg| %>
-  <div class="message" id="<%= key %>">
-    <div class="message-inner">
-      <%= content_tag :div, msg %>
-    </div>
-  </div>
-<% end %>
-
 <div id='container' class='row'>
   <nav id='left_column_nav' class="small-2 columns">
     <ul class="side-nav">
@@ -41,9 +33,9 @@
 
     <footer>
       <div id="social-icons">
-        <a href="https://facebook.com"><img src="facebook.png" width="24" height="24" alt="Facebook" /></a>
-        <a href="https://twitter.com"><img src="twitter.png" width="24" height="24" alt="Twitter" /></a>
-        <a href="https://github.com"><img src="github.png" width="24" height="24" alt="Github" /></a>
+        <a href="https://facebook.com"><%= image_tag 'facebook.png', size: '24x24' %></a>
+        <a href="https://twitter.com"><%= image_tag 'twitter.png', size: '24x24' %></a>
+        <a href="https://github.com"><%= image_tag 'github.png', size: '24x24' %></a>
       </div>
         <p>Created by:</p>
         <a href="mailto:seth@sethhochberg.com">Seth, </a>
@@ -53,7 +45,16 @@
     </footer>
   </nav>
   <div id='content' class='small-10 columns'>
-    <%= yield %>
+    <% flash.each do |key,msg| %>
+  		<div class="message" id="<%= key %>">
+    		<div class="message-inner">
+      	<%= content_tag :p, msg %>
+    		</div>
+  		</div>
+		<% end %>
+
+
+		<%= yield %>
   </div>
 </div>
 

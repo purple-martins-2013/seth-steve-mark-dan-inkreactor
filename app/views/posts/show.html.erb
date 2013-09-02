@@ -8,6 +8,9 @@
 	<% @post.tags.each do |tag| %>
 		<span><%= link_to tag.name, tag_path(tag) %></span>
 	<% end %>
+	<div class="tag-form">
+		<%= render partial: 'tags/new' %>
+	</div>
 </div>
 <hr />
 <div>
