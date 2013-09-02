@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 20130901233413) do
     t.integer  "user_id"
   end
 
+  create_table "posts_tags", id: false, force: true do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+  end
+
+  add_index "posts_tags", ["post_id"], name: "index_posts_tags_on_post_id"
+  add_index "posts_tags", ["tag_id", "post_id"], name: "index_posts_tags_on_tag_id_and_post_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username",                            null: false
     t.string   "email",                  default: "", null: false
@@ -52,7 +66,7 @@ ActiveRecord::Schema.define(version: 20130901233413) do
   create_table "votes", force: true do |t|
     t.integer "user_id"
     t.integer "post_id"
-    t.boolean "upvote",  default: false
+    t.boolean "upvote"
   end
 
 end

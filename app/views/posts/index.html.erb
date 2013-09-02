@@ -1,6 +1,10 @@
-<h4>This shows all the Posts</h4>
-<% @posts.each do |post| %>
-  <div><%= post.subject %></div>
+<% if @tag %>
+	<h1>Posts tagged with <%= @tag.name %></h1>
+<% else %>
+	<h1>Posts</h1>
 <% end %>
-
+<% @posts.each do |post| %>
+  <h4><%= link_to post.subject, post_path(post) %></h4>
+<% end %>
+<hr />
 <%= link_to "Add New Post", new_post_path %>

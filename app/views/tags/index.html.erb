@@ -1,0 +1,5 @@
+<div id="tag-list">
+	<% @tags.each do |tag|%>
+		<h3><%= link_to tag.name, tag_path(tag) %></h3>
+	<% end %>
+</div>
