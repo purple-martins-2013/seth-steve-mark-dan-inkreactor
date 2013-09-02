@@ -1,15 +1,21 @@
 <div>
-  <h4><%= @post.subject %></h4>
+  <h1><%= @post.subject %></h1>
   <p><%= @post.content %></p>
   <%= link_to 'Delete Post', post_path(@post), method: :delete %>
 </div>
-
-<div>
-  <%= render partial: 'comments/form' %>
+<div class="post-tags">
+	<h4>Post Tags:</h4>
+	<% @post.tags.each do |tag| %>
+		<span><%= link_to tag.name, tag_path(tag) %></span>
+	<% end %>
 </div>
-
+<hr />
 <div>
-  <ul>
+	<h4>Comments:</h4>
+  <div>
+  	<%= render partial: 'comments/form' %>
+	</div>
+	<ul>
     <% @post.comments.each do |comment| %>
       <li id="comment-<%= comment.id %>", class='get-edit-comment'>
         <%= render '/posts/comment_template', comment: comment %></br>

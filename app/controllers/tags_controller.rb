@@ -6,6 +6,7 @@ class TagsController < ApplicationController
 
 	def show
 		@posts = Tag.posts_tagged_with(params[:name])
+		@tag = Tag.find_by_name(params[:name])
 		render 'posts/index'
 	end
 
