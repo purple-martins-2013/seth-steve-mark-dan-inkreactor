@@ -15,19 +15,19 @@ FactoryGirl.define do
       end
 
       before(:create) do |post, evaluator|
-        FactoryGirl.create_list(:comment, evaluator.comment_count, post: post)
+        create_list(:comment, evaluator.comment_count, post: post)
       end
 
     end
-	
+
     factory :post_with_tags do
       ignore do
 				tag_count 5
 			end
     end
 		before(:create) do |post, evaluator|
-			FactoryGirl.create_list(:comment, evaluator.comment_count, post: post)
-			FactoryGirl.create_list(:tag, evaluator.comment_count, post: post)
+			create_list(:comment, evaluator.comment_count, post: post)
+			# create_list(:tag, evaluator.comment_count, post: post)
 		end
   end
 
@@ -45,12 +45,12 @@ FactoryGirl.define do
 
 	factory :tag do
 		sequence(:name) {|n| "Tag Name #{n}"}
-		posts {[FactoryGirl.create(:post)]}
+		posts {[create(:post)]}
 
 		factory :invalid_tag do
 			name ""
 		end
 	end
-	
+
 
 end

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head profile="http://www.inkreactor.com">
-  <title>Inkreactor</title> 
+  <title>Inkreactor</title>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "layout", media: "all", "data-turbolinks-track" => true %>
+  // REVIEW: require this file in application.js and move it from here.
   <%= javascript_include_tag "vendor/custom.modernizr" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -16,12 +17,14 @@
 <div id='container' class='row'>
   <nav id='left_column_nav' class="small-2 columns">
     <ul class="side-nav">
-
+    // REVIEW: move this to a partial
       <li><%if !current_user%><%=link_to "Sign In", user_session_path %><%end%></li>
       <li><%if !current_user%><%=link_to "Sign Up", new_user_registration_path%><%end%></li>
       <li><%if current_user%><%=link_to "Sign Out", destroy_user_session_path, :method =>:delete %><%end%></li>
 
+
       <li class="nav_bar_divider"></li>
+      // REVIEW: move this to a partial
       <li><a data-dropdown="drop1">Post</a>
           <ul id="drop1" class="f-dropdown" data-dropdown-content>
             <li><a href="#"></a></li>

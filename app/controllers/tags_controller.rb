@@ -4,6 +4,7 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
+  # REVIEW: don't render posts/index, create a tags/show template that render a shared partial.
 	def show
 		@posts = Tag.posts_tagged_with(params[:name])
 		@tag = Tag.find_by_name(params[:name])
@@ -11,7 +12,7 @@ class TagsController < ApplicationController
 	end
 
 	def new
-		@tag = @post.tags.new	
+		@tag = @post.tags.new
 		render :_new
 	end
 

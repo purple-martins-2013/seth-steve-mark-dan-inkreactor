@@ -15,8 +15,22 @@ Spork.prefork do
   require 'factory_girl_rails'
   require 'capybara/rspec'
   require 'launchy'
-  
+
+  Spork.each_run do
+    # This code will be run each time you run your specs.
+
+    # Requires supporting ruby files with custom matchers and macros, etc,
+    # in spec/support/ and its subdirectories.
+    Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
+    # Checks for pending migrations before tests are run.
+    # If you are not using ActiveRecord, you can remove this line.
+    ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+  end
+
   RSpec.configure do |config|
+    config.include FactoryGirl::Syntax::Methods
+    config.include CapybaraHelper
     # ## Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -31,7 +45,19 @@ Spork.prefork do
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
+
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
@@ -44,18 +70,6 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
   end
-end
-
-Spork.each_run do
-  # This code will be run each time you run your specs.
-
-  # Requires supporting ruby files with custom matchers and macros, etc,
-  # in spec/support/ and its subdirectories.
-  Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-
-  # Checks for pending migrations before tests are run.
-  # If you are not using ActiveRecord, you can remove this line.
-  ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 end
 
 # --- Instructions ---

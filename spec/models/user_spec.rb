@@ -1,6 +1,4 @@
 require 'spec_helper'
-
-
 describe User do
   context "user model functionality" do
     it { should validate_presence_of(:username) }
@@ -12,15 +10,14 @@ describe User do
     it { should_not allow_value("@gmail.com").for(:email) }
     it { should_not allow_value("@gmail.com").for(:email) }  #repeat
   end
-end
-
-describe User do
   context "user database operations" do
+    let(:new_user) { build :user }
     it "user should be persisted in the database" do
-      new_user=User.new(username:'mark' ,email:'mark@email.com', password:'password')
-      new_user.save
-      expect(User.count).to eq 1
+      expect {
+        new_user.save
+      }.to change(User, :count).by(1)
     end
   end
 
 end
+

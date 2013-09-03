@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'comment show feature' do
 
   before do
+    # REVIEW: replace with new login helper method spec/support/capybara_helper
     User.create({:username => 'foo', :email => 'Person1@example.com', :password => 'password'})
     visit new_user_session_path
     fill_in 'user[email]', with: 'Person1@example.com'

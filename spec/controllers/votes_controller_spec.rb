@@ -1,10 +1,9 @@
 require 'spec_helper'
-
+# REVIEW: this is an empty test.
 describe VotesController do
-	
+
 	before do
-  	FactoryGirl.create(:user)
-  	sign_in User.first
+  	sign_in create(:user)
   end
 
   let(:post_to_vote_on) { FactoryGirl.create(:post)}

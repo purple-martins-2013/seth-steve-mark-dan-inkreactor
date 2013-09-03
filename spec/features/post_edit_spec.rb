@@ -1,14 +1,10 @@
 require 'spec_helper'
 
 describe "edit post feature" do
-
+  let!(:user) {create :user}
   #TODO This is also used in post_creation_spec.rb.  Refactor
   before do
-    User.create({:username => 'foo', :email => 'Person1@example.com', :password => 'password'})
-    visit new_user_session_path
-    fill_in 'user[email]', with: 'Person1@example.com'
-    fill_in 'user[password]', with: 'password'
-    click_on 'Sign in'
+    login user
   end
 
   it 'should edit a post and redirect to post page' do
@@ -21,4 +17,4 @@ describe "edit post feature" do
     expect(page).to have_content('New Content')
   end
 
-end 
+end

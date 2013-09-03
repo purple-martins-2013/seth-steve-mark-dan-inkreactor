@@ -3,15 +3,15 @@ require 'spec_helper'
 describe PostsController do
 
   #TODO is there a better way?
+  let(:user) { create(:user) }
   before do
-    @user = FactoryGirl.create(:user)
-    sign_in @user
+    sign_in user
   end
 
   describe '#index' do
     it 'should display the first 25 posts' do
       get :index
-      expect(assigns(:posts)).to eq Post.limit(25)
+      expect(assigns(:posts)).to eq Post.limit(Post::PER_PAGE)
     end
   end
 
@@ -94,7 +94,7 @@ describe PostsController do
   describe '#destroy' do
 
     before do
-      @post = FactoryGirl.create(:post, { user: @user})
+      @post = FactoryGirl.create(:post, { user: user})
       delete :destroy, { id: @post.id }
     end
 
@@ -129,7 +129,7 @@ describe PostsController do
       end
     end
   end
-  
+
   describe 'get show' do
     let(:post_to_comment_on) { FactoryGirl.create(:post) }
     let(:comment) { FactoryGirl.create(:comment, post_id: post_to_comment_on.id) }

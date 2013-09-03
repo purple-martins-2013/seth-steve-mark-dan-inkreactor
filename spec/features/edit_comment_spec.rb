@@ -1,18 +1,16 @@
 require 'spec_helper'
 
 describe 'Edit comment' do
+  let!(:user) {create :user}
   before do
-    User.create({:username => 'foo', :email => 'Person1@example.com', :password => 'password'})
-    visit new_user_session_path
-    fill_in 'user[email]', with: 'Person1@example.com'
-    fill_in 'user[password]', with: 'password'
-    click_on 'Sign in'
+    login user
   end
 
   let(:commented_post) { FactoryGirl.create(:post_with_comments) }
 
   describe "when current_user is the comment's author", js: true do
     it 'should edit the comment content' do
+      save_and_open_page
       visit post_path(commented_post)
       within ("#comment-#{commented_post.comments.first.id}") do
         click_on "edit"
